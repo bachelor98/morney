@@ -7,6 +7,7 @@
 </template>
 
 <script lang="ts">
+import x from '/@assert/icons/Labels.svg'
 export default {
     name:'Nav'
 }

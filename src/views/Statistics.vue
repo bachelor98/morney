@@ -2,7 +2,7 @@ import Layout from '@/components/Layout.vue';
 <template>
     <div>
         <Layout>
-            Statstisc
+            Statistics
         </Layout>
     </div>
 </template>
