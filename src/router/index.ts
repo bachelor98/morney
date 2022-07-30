@@ -1,6 +1,7 @@
 import Money from '@/views/Money.vue'
 import Labels from '@/views/Labels.vue'
 import Statistics from '@/views/Statistics.vue'
+import NotFound from '@/views/NotFound.vue'
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import { Component } from 'vue-property-decorator';
@@ -25,6 +26,10 @@ const routes = [
   {
     path:'/statistics',
     component : Statistics
+  },
+  {
+    path:'*', //其他的所有路径
+    component : NotFound
   }
   // {
   //   path: '/',
