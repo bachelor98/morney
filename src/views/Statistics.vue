@@ -1,15 +1,16 @@
+import Layout from '@/components/Layout.vue';
 <template>
     <div>
-        Statistics
-        <Nav />
+        <Layout>
+            Statstisc
+        </Layout>
     </div>
 </template>
 
 <script lang="ts">
 
 export default {
-    name:'Statistics',
-
+    name:'Statistics'
 }
 </script>
 
