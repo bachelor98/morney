@@ -9,7 +9,7 @@ module.exports = {
       .rule('svg-sprite')   //添加规则
       .test(/\.svg$/)    //正则
       .include.add(dir).end()   //指定icons目录使用该规则
-      .use('svg-sprite-loader').loader('svg-sprite-loader').options({extract:false}).end() 
+      .use('svg-sprite-loader').loader('svg-sprite-loader').options({extract:false}).end()
     config.plugin('svg-sprite').use(require('svg-sprite-loader/plugin'),[{plainSprite:true}])
     config.module.rule('svg').exclude.add(dir)    //其他svg loader排除icons目录
   }
