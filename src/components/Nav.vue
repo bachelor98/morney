@@ -18,6 +18,7 @@
 <script lang="ts">
 import Icon from './Icon.vue'
 
+
 export default {
   components: { Icon },
     name:'Nav'
@@ -25,6 +26,8 @@ export default {
 </script>
 
 <style lang="scss" scoped> //scoped的作用是自动在div上加随机字符串，这样就不怕重名
+@import "~@/assets/style/helper.scss";
+
 nav{
   display: flex;
   box-shadow: 0 0 3px rgba(0,0,0,0.25);
@@ -43,7 +46,7 @@ nav{
     }
   }
   > .item.selected{
-    color: red;
+    color: $color-highlight;
   }
 }
 </style>
