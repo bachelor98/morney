@@ -7,3 +7,12 @@ a{
     text-decoration: none;
     color: inherit;   //颜色继承
 }
+ul,ol{
+    list-style: none;
+}
+button,input{
+    font:inherit;
+}
+:focus{
+    outline: none;
+}
