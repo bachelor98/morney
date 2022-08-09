@@ -1,6 +1,12 @@
 <template>
     <Layout>
-        bianji
+        <div>
+            <Icon name="back"/>
+            <span>
+                编辑标签
+            </span>
+        </div>
+        <Notes field-name="标签" placeholder="请输入标签名"/>
     </Layout>
 </template>
 
@@ -8,7 +14,10 @@
 import tagListModel from '@/models/tagListModel'
 import Vue from 'vue'
 import {Component} from 'vue-property-decorator'
-@Component
+import Notes from '@/components/Money/Notes.vue'
+@Component({
+    components:{Notes}
+})
 export default class EditLabel extends Vue{
     created(){
         const id = this.$route.params.id
