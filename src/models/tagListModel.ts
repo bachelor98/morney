@@ -6,7 +6,7 @@ type Tag = {
 type TagListModel = {
     data:Tag[]
     fetch:()=>Tag[]
-    create:(name:string)=>'success' | 'duplicated'    //联合类型，success表示成功，duplicated表示内容重复
+    create:(name:string)=>'success' | 'duplicated' | 'null'   //联合类型，success表示成功，duplicated表示内容重复
     save:()=>void
 }
 const tagListModel:TagListModel = {

@@ -9,7 +9,7 @@
             </router-link>
         </div>
         <div class="createTag-wrapper">
-            <button class="createTag" @click="createTag">新建标签</button>
+            <Button class="createTag" @click="createTag">新建标签</Button>
         </div>
     </Layout>
 </template>
@@ -30,9 +30,12 @@ export default class Labels extends Vue{
             const message = tagListModel.create(name)
             if(message === 'duplicated'){
                 window.alert('标签名重复')
-            }else if(message === 'success'){
+            }
+            else if(message === 'success'){
                 window.alert('添加成功')
             }
+        }else{
+            window.alert('标签名为空')
         }
     }
 }
