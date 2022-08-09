@@ -23,9 +23,11 @@ export default class Tags extends Vue{
         const index = this.selectedTags.indexOf(tag)
         if(this.selectedTags.length >= 1){
             this.selectedTags.splice(0,this.selectedTags.length)
-        }
             this.selectedTags.push(tag)
-            this.$emit('update:value',this.selectedTags)
+        }else{
+            this.selectedTags.push(tag)
+        }
+        this.$emit('update:value',this.selectedTags)
     }
 
     create(){

@@ -23,6 +23,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import {Component,Prop} from 'vue-property-decorator'
+import Tags from './Tags.vue';
 @Component
     export default class NumberPad extends Vue{
         output = '0';

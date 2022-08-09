@@ -5,6 +5,7 @@ import NotFound from '@/views/NotFound.vue'
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import { Component } from 'vue-property-decorator';
+import EditLabel from '@/views/EditLabel.vue'
 
 
 
@@ -26,6 +27,10 @@ const routes = [
   {
     path:'/statistics',
     component : Statistics
+  },
+  {
+    path:'/labels/edit',
+    component:EditLabel
   },
   {
     path:'*', //其他的所有路径
