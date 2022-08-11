@@ -12,13 +12,22 @@
 </template>
 
 <script lang="ts">
-import store from "@/store/tagStore"
 import Vue from "vue"
 import {Component,Prop} from 'vue-property-decorator'
-@Component
+@Component({
+    computed:{
+        tagList(){
+            return this.$store.state.tagList
+        }
+    }
+})
 export default class Tags extends Vue{
-    tagList = store.fetchTags()
+    tagList = this.$store.commit('fetchTags')
     selectedTags:string[] = []
+
+    created(){
+        this.$store.commit('fetchTags')
+    }
 
     toggle(tag:string){
         const index = this.selectedTags.indexOf(tag)
@@ -40,8 +49,8 @@ export default class Tags extends Vue{
         }
         else if(name.length>10){
             window.alert('标签名称过长！')
-        }else if(this.tagList){
-            store.createTag(name)
+        }else{
+            this.$store.commit('createTag',name)
         }
     }
 }
