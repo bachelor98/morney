@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts">
+import Button from '@/components/Button.vue'
 import Vue from 'vue'
 import {Component,Prop} from 'vue-property-decorator'
 @Component

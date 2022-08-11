@@ -8,7 +8,7 @@
             <span class="rightIcon"></span>
         </div>
         <div class="form-wrapper">
-            <form-item :value=tag.name
+            <form-item :value="tag.name"
             @update:value="update" 
             field-name="标签" placeholder="请输入标签名"/>
         </div>
@@ -19,6 +19,9 @@
 </template>
 
 <script lang="ts">
+//store.commit没有返回值
+//所以通过currentTag来获取commit('setCurrentTag')的返回值
+
 import Vue from 'vue'
 import {Component} from 'vue-property-decorator'
 import FormItem from '@/components/Money/FormItem.vue'
@@ -29,29 +32,27 @@ import Button from '@/components/Button.vue'
     components:{Button,FormItem}
 })
 export default class EditLabel extends Vue{
-    //this.tag = store.findTag(this.$route.params.id)
+    get tag(){
+        return this.$store.state.currentTag
+    }
 
     created(){
+        const id = this.$route.params.id
+        this.$store.commit('fetchTags')
+        this.$store.commit('setCurrentTag',id)
         if(!this.tag){
             this.$router.replace('/404')
         }
     }
     update(name:string){
         if(this.tag){
-            return
-            //TODO
-            //store.updateTag(this.tag.id,name)
+            this.$store.commit('updateTag',{id:this.tag.id,name})
         }
     }
     remove(){
         if(this.tag){
-            return
-            //TODO
-            //if(store.removeTag(this.tag.id)){
-            //     this.$router.back()
-            // }else{
-            //     window.alert('删除失败')
-            // }
+            this.$store.commit('removeTag',this.tag.id)
+            this.$router.back()
         }
     }
     goBack(){

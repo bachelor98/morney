@@ -16,16 +16,17 @@ import TagHelper from "@/mixins/TagHelper"
 import Vue from "vue"
 import { mixins } from "vue-class-component"
 import {Component,Prop} from 'vue-property-decorator'
-@Component({
-    computed:{
-        tagList(){
-            return this.$store.state.tagList
-        }
-    }
-})
-export default class Tags extends mixins(TagHelper){
-    tagList = this.$store.commit('fetchTags')
+@Component
+
+//根据vue-component的文档
+//使用如下方法来导入mixins的TagHelper的createTag函数，减少重复
+export default class Tags extends mixins(TagHelper){    
+
     selectedTags:string[] = []
+
+    get tagList(){
+        return this.$store.state.tagList
+    }
 
     created(){
         this.$store.commit('fetchTags')
