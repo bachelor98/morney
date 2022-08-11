@@ -10,13 +10,12 @@ const tagStore = {
       return this.tagList
     },
     findTag (id:string){
-      window.alert('标签名重复')
       return this.tagList.filter(t => t.id === id)[0]
   },
     createTag(name:string){
-
       const names = this.tagList.map(item => item.name)
       if(names.indexOf(name)>=0){
+        window.alert('标签名重复')
         return 'duplicated'
       }
       const id = createId().toString()
@@ -24,7 +23,6 @@ const tagStore = {
       this.saveTags()
       window.alert('添加成功')
       return 'success'
-
   },
     removeTag (id:string){
       let index = -1
@@ -47,7 +45,6 @@ const tagStore = {
           }else{
               const tag = this.tagList.filter(item => item.id === id)[0]
               tag.name = name
-              tag.id = name
               this.saveTags()
               return 'success'
           }
