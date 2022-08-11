@@ -8,7 +8,7 @@
             <span class="rightIcon"></span>
         </div>
         <div class="form-wrapper">
-            <form-item :value="tag.name"
+            <form-item :value="currentTag.name"
             @update:value="update" 
             field-name="标签" placeholder="请输入标签名"/>
         </div>
@@ -22,17 +22,17 @@
 //store.commit没有返回值
 //所以通过currentTag来获取commit('setCurrentTag')的返回值
 
-import Vue from 'vue'
-import {Component} from 'vue-property-decorator'
-import FormItem from '@/components/Money/FormItem.vue'
 import Button from '@/components/Button.vue'
+import FormItem from '@/components/Money/FormItem.vue'
+import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
 
 
 @Component({
     components:{Button,FormItem}
 })
 export default class EditLabel extends Vue{
-    get tag(){
+    get currentTag(){
         return this.$store.state.currentTag
     }
 
@@ -40,18 +40,18 @@ export default class EditLabel extends Vue{
         const id = this.$route.params.id
         this.$store.commit('fetchTags')
         this.$store.commit('setCurrentTag',id)
-        if(!this.tag){
+        if(!this.currentTag){
             this.$router.replace('/404')
         }
     }
     update(name:string){
-        if(this.tag){
-            this.$store.commit('updateTag',{id:this.tag.id,name})
+        if(this.currentTag){
+            this.$store.commit('updateTag',{id:this.currentTag.id,name})
         }
     }
     remove(){
-        if(this.tag){
-            this.$store.commit('removeTag',this.tag.id)
+        if(this.currentTag){
+            this.$store.commit('removeTag',this.currentTag.id)
             this.$router.back()
         }
     }
