@@ -1,9 +1,11 @@
 <template>
     <div>
         <ul class="types">
-            <li :class="value === '-' && 'selected'"
+            <li 
+            :class="{[classPrefix+'-item']:classPrefix,selected:value==='-'}"
             @click="selectType('-')">支出</li>
-            <li :class="value === '+' && 'selected'"
+            <li 
+            :class="{[classPrefix+'-item']:classPrefix,selected:value==='+'}"
             @click="selectType('+')">收入</li>
         </ul>
     </div>
@@ -16,7 +18,8 @@
     @Component
     export default class Types extends Vue {
 
-        @Prop() readonly value!: string   
+        @Prop(String) readonly value!: string
+        @Prop(String) classPrefix?:string
         //Number是运行时报错，即浏览器报错
         // number | undefined 是编译时报错
         //即TS报错，而js根本没有运行就被ts拦截，浏览器不报错
