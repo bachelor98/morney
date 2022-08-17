@@ -5,10 +5,15 @@
             <Tabs :data-source="recordTypeList"
             :value.sync="record.type" />
             <div class="notes">
-                <form-item field-name="备注" 
+                <form-item field-name="备注" :value="record.notes"
                 @update:value="onUpdateNotes" placeholder="在这里输入备注"/>
             </div>
-            <tags/>
+            <div class="createdAt">
+                <form-item field-name="日期" :value.sync="record.createdAt"
+                type="date"
+                placeholder="在这里输入日期"/>
+            </div>
+            <tags @update:value="record.tags = $event"/>
         </Layout>
 </template>
 
@@ -21,7 +26,6 @@ import {Component} from 'vue-property-decorator'
 import recordTypeList from '@/constants/recordTypeList'
 import Tabs from '@/components/Tabs.vue'
 
-
 @Component({
     components: { NumberPad, FormItem, Tags ,Tabs},
 })
@@ -32,7 +36,7 @@ export default class Money extends Vue{
 
     recordTypeList = recordTypeList
 
-    record:RecordItem = {tags:[],notes:'',type:'-',amount:0
+    record:RecordItem = {tags:[],notes:'',type:'-',amount:0,createdAt:new Date().toISOString()
     }
     created(){
         this.$store.commit('fetchRecords')
@@ -45,14 +49,27 @@ export default class Money extends Vue{
         this.record.amount = parseFloat(value)
     }
     saveRecord(){
-        this.$store.commit('createRecord',this.record)
+        if(this.record.tags.length === 0){
+            const a = window.confirm('你没有选择标签，确定要继续吗？')
+            if(a){
+                this.$store.commit('createRecord',this.record)
+                this.record.notes = ''
+                window.alert('保存成功！')
+            }else{
+                return
+            }
+        }else{
+            this.$store.commit('createRecord',this.record)
+            this.record.notes = ''
+            window.alert('保存成功！')
+        }
     }
 
 }
 </script>
 
-<style lang="scss">
-.layout-content{
+<style lang="scss" scoped>
+::v-deep .layout-content{
     display: flex;
     flex-direction:column-reverse; 
 }

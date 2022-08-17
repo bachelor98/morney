@@ -32,6 +32,8 @@ export default class Tags extends mixins(TagHelper){
         this.$store.commit('fetchTags')
     }
 
+    
+
     toggle(tag:string){
         const index = this.selectedTags.indexOf(tag)
         if(this.selectedTags.length >= 1){

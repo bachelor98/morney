@@ -49,7 +49,8 @@ import Tags from './Tags.vue';
                 }
             }
             if(this.output.indexOf('.')>=0){
-                if(input==='.'){return;}
+                if(input==='.')
+                    {return;}
             }
             this.output += input;
         }
@@ -66,11 +67,15 @@ import Tags from './Tags.vue';
         ok(){
             if(this.output === '0'){
                 window.alert('记账金额不能为0！')
-            }else{
+            }else if(this.output === '0.0'){
+                window.alert('记账金额不能为0！')
+            }else if(this.output === '0.00'){
+                window.alert('记账金额不能为0！')
+            }
+            else{
             this.$emit('update:value',this.output)
             this.$emit('submit',this.output)
             this.output='0'
-            window.alert('保存成功！')
             }
         }
     }
