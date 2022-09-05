@@ -63,9 +63,9 @@ export default class Tags extends mixins(TagHelper){
             > li{
                 $bg:#d9d9d9;
                 margin-top: 4px;
+                white-space:nowrap;
                 $h:24px;
                 background: $bg;
-                height: $h;
                 height: $h;
                 line-height: $h;    //只有在确保只有一行字的时候才能使line-height等于height
                 border-radius: calc($h/2);

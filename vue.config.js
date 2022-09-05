@@ -1,6 +1,9 @@
 const path = require('path')  //引入path模块
 
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+  ? '/morney-website/'
+  : '/',
   lintOnSave: false,
   chainWebpack : config => {   //添加chaiWebpack函数
     const dir = path.resolve(__dirname,'src/assets/icons')   //__dirname就是当前目录
