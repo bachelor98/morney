@@ -66,6 +66,12 @@ export default class Money extends Vue{
     }
 
 }
+
+
+if(window.innerWidth>450){
+    window.alert('此项目针对手机开发，推荐使用手机打开')
+}
+
 </script>
 
 <style lang="scss" scoped>
